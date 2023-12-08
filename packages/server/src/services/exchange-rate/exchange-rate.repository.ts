@@ -1,12 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { MoreThanOrEqual, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ExchangeRateEntity } from '../../entities';
 import { OmittedMetaEntityColumns } from '../../common';
 
 @Injectable()
 export class ExchangeRateRepository {
-    private CACHE_TIME_MILLIS = 300_000;
     constructor(
         @InjectRepository(ExchangeRateEntity)
         private repository: Repository<ExchangeRateEntity>
@@ -29,9 +28,6 @@ export class ExchangeRateRepository {
             .execute();
     }
     public getExchangeRates() {
-        const now = new Date(new Date().valueOf() - this.CACHE_TIME_MILLIS);
-        return this.repository.find({
-            where: { updatedAtUtc: MoreThanOrEqual(now) },
-        });
+        return this.repository.find();
     }
 }
