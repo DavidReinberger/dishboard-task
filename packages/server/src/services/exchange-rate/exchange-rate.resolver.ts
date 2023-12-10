@@ -11,4 +11,10 @@ export class ExchangeRateResolver {
     exchangeRates() {
         return this.exchangeRateService.getExchangeRates();
     }
+
+    @Query(() => Number, { nullable: true })
+    async cacheAge() {
+        const rates = await this.exchangeRateService.getExchangeRates();
+        return new Date(rates[0].updatedAtUtc ?? new Date()).valueOf();
+    }
 }

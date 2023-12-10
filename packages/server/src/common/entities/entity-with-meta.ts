@@ -1,11 +1,5 @@
 import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
-import {
-    CreateDateColumn,
-    DeleteDateColumn,
-    PrimaryGeneratedColumn,
-    UpdateDateColumn,
-    VersionColumn,
-} from 'typeorm';
+import { CreateDateColumn, DeleteDateColumn, UpdateDateColumn, VersionColumn } from 'typeorm';
 
 @ObjectType()
 export abstract class EntityWithMeta {

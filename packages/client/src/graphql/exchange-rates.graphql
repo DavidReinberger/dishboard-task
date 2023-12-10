@@ -1,0 +1,14 @@
+query ExchangeRates {
+    exchangeRates {
+        amount
+        country
+        rate
+        currencyCode
+        currencyName
+        updatedAtUtc
+    }
+}
+
+query CacheInfo {
+    cacheAge
+}

@@ -21,4 +21,5 @@ scalar DateTime
 
 type Query {
   exchangeRates: [ExchangeRateEntity!]!
+  cacheAge: Float
 }
